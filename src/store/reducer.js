@@ -1,30 +1,36 @@
 const initialState = {
-    counter: 0
+    counter: 0,
+    results: [],
+
 };
 
 const reducer = (state = initialState, action) => {
-    if (action.type === "INCREMENT") {
-        return {
-            counter: state.counter + 1
-        }
-    }
-    if (action.type === "DECREMENT") {
-        return {
-            counter: state.counter - 1
-        }
-    }
-    if (action.type === "ADD_5") {
-        console.log('add5')
-
-        return {
-            counter: state.counter + action.value
-        }
-    }
-    if (action.type === "SUBTRACT_5") {
-        console.log('sub5')
-        return {
-            counter: state.counter - action.value
-        }
+    switch (action.type) {
+        case 'INCREMENT':
+            return {
+                ...state,
+                counter: state.counter + 1
+            }
+        case 'DECREMENT':
+            return {
+                ...state,
+                counter: state.counter - 1
+            }
+        case 'ADD_5':
+            return {
+                ...state,
+                counter: state.counter + 5
+            }
+        case 'SUBTRACT_5':
+            return {
+                ...state,
+                counter: state.counter - 5
+            }
+        case 'STORE_RESULT':
+            return {
+                ...state,
+                results: state.results.concat({ id: new Date(), value: state.counter })
+            }
     }
 
     return state;
