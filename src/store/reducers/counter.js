@@ -20,15 +20,14 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD:
             return {
                 ...state,
-                counter: state.counter + 5
+                counter: state.counter + action.val
             }
         case actionTypes.SUBTRACT:
             return {
                 ...state,
-                counter: state.counter - 5
+                counter: state.counter - action.val
             }
     }
-
     return state;
 }
 
